@@ -23,6 +23,9 @@ jobs:
           echo "{\"username\": \"${{ secrets.KAGGLE_USERNAME }}\", \"key\": \"${{ secrets.KAGGLE_API_KEY }}\"}" > ~/.kaggle/kaggle.json
           chmod 600 ~/.kaggle/kaggle.json
 
+      - name: Verify Kaggle Authentication
+        run: kaggle datasets list  # Should return dataset lists if authentication is successful
+
       - name: Download Dataset from Kaggle Competition
         run: kaggle competitions download -c ieee-fraud-detection --unzip -p dataset/
 
