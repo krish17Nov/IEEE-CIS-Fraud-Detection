@@ -14,7 +14,7 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v3
 
-      - name: Install Kaggle CLI
+      - name: Install Dependencies
         run: pip install kaggle
 
       - name: Set Up Kaggle API Credentials
@@ -26,8 +26,14 @@ jobs:
       - name: Verify Kaggle Authentication
         run: kaggle datasets list  # Should return dataset lists if authentication is successful
 
+      - name: Create Dataset Directory
+        run: mkdir -p dataset
+
       - name: Download Dataset from Kaggle Competition
-        run: kaggle competitions download -c ieee-fraud-detection --unzip -p dataset/
+        run: kaggle competitions download -c ieee-fraud-detection -p dataset/
+
+      - name: Extract Dataset
+        run: unzip -o "dataset/*.zip" -d dataset/ && rm dataset/*.zip
 
       - name: Commit and Push Dataset to GitHub
         run: |
