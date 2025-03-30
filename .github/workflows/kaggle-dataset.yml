@@ -17,10 +17,10 @@ jobs:
       - name: Install Kaggle CLI
         run: pip install kaggle
 
-      - name: Set Up Kaggle API Key
+      - name: Set Up Kaggle API Credentials
         run: |
           mkdir -p ~/.kaggle
-          echo "${{ secrets.KAGGLE_API_KEY }}" > ~/.kaggle/kaggle.json
+          echo "{\"username\": \"${{ secrets.KAGGLE_USERNAME }}\", \"key\": \"${{ secrets.KAGGLE_API_KEY }}\"}" > ~/.kaggle/kaggle.json
           chmod 600 ~/.kaggle/kaggle.json
 
       - name: Download Dataset from Kaggle Competition
