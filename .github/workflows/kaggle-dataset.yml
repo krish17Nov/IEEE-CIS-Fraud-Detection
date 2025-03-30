@@ -23,13 +23,13 @@ jobs:
           echo "${{ secrets.KAGGLE_API_KEY }}" > ~/.kaggle/kaggle.json
           chmod 600 ~/.kaggle/kaggle.json
 
-      - name: Download Dataset from Kaggle
-        run: kaggle datasets download -d ieee-fraud-detection/ieee-fraud-detection --unzip -p dataset/
+      - name: Download Dataset from Kaggle Competition
+        run: kaggle competitions download -c ieee-fraud-detection --unzip -p dataset/
 
       - name: Commit and Push Dataset to GitHub
         run: |
-          git config --global user.name "github-actions"
-          git config --global user.email "actions@github.com"
+          git config --global user.name "krish17Nov"
+          git config --global user.email "kr.17nov@gmail.com"
           git add dataset/
           git commit -m "Auto-update IEEE-CIS Fraud Detection dataset"
           git push
