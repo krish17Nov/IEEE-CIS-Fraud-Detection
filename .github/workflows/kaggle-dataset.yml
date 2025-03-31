@@ -32,8 +32,9 @@ jobs:
       - name: Download Dataset from Kaggle Competition
         run: kaggle competitions download -c ieee-fraud-detection -p dataset/
 
-      - name: Extract Dataset
-        run: unzip -o "dataset/*.zip" -d dataset/ && rm dataset/*.zip
+      # Skip extraction; CSV files will remain zipped
+      - name: List Files in Dataset Directory
+        run: ls -l dataset/
 
       - name: Commit and Push Dataset to GitHub
         run: |
