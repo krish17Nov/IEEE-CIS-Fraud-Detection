@@ -39,7 +39,7 @@ jobs:
       - name: Commit and Push Dataset to GitHub
         run: |
           git config --global user.name "krish17Nov"
-          git config --global user.email "your-email@example.com"
+          git config --global user.email "kr.17nov@gmail.com"
           git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/krish17Nov/IEEE-CIS-Fraud-Detection.git
           git add .
           git commit -m "Auto-update IEEE-CIS Fraud Detection dataset"
