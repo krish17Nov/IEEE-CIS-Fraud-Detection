@@ -24,3 +24,14 @@ SELECT
 FROM train_transactions_table
 GROUP BY "card6"
 ORDER BY fraud_percentage DESC;
+
+//average money spent versus total money spent for fraud and not fraud
+SELECT 
+    CASE 
+        WHEN "isFraud" = TRUE THEN 'Fraudulent'
+        WHEN "isFraud" = FALSE THEN 'Non-Fraudulent'
+    END AS fraud_status,
+    AVG("TransactionAmt") AS avg_transaction_amt,
+    SUM("TransactionAmt") AS total_transaction_amt
+FROM train_transactions_table
+GROUP BY fraud_status;
