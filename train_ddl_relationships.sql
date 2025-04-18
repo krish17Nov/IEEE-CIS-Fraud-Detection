@@ -1,15 +1,11 @@
---DDL statments and formatting from importing data
+--Managing keys (primary and foregin)
+ALTER TABLE train_transaction
+ADD CONSTRAINT pk_transaction_id PRIMARY KEY (transaction_id)
 
---rename the column in transactions
-ALTER TABLE train_transactions_table
-RENAME COLUMN "TransactionID" TO "Identity_TransactionID";
+ALTER TABLE train_identity
+ADD CONSTRAINT fk_transaction_id
+FOREIGN KEY (transaction_id)
+REFERENCES train_transaction(transaction_id);
 
---makes transactions from identity a foregin key for transactions
-ALTER TABLE train_transactions_table
-ADD CONSTRAINT "Identity_TransactionID"
-FOREIGN KEY ("Identity_TransactionID")
-REFERENCES train_identity_table("TransactionID");
-
---makes TransactionID a primary key
-ALTER TABLE train_identity_table
-ADD PRIMARY KEY ("TransactionID");
+ALTER TABLE train_identity
+ADD CONSTRAINT pk_identity_transaction_id PRIMARY KEY (transaction_id)
