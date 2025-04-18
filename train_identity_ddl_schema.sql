@@ -1,55 +1,58 @@
--- Table: public.train_identity_table
+-- Table: public.train_identity
 
--- DROP TABLE IF EXISTS public.train_identity_table;
+-- DROP TABLE IF EXISTS public.train_identity;
 
-CREATE TABLE IF NOT EXISTS public.train_identity_table
+CREATE TABLE IF NOT EXISTS public.train_identity
 (
-    "TransactionID" numeric NOT NULL,
-    id_01 numeric NOT NULL,
-    id_02 numeric,
-    id_03 numeric,
-    id_04 numeric,
-    id_05 numeric,
-    id_06 numeric,
-    id_07 numeric,
-    id_08 numeric,
-    id_09 numeric,
-    id_10 numeric,
-    id_11 numeric,
-    id_12 character varying COLLATE pg_catalog."default" NOT NULL,
-    id_13 numeric,
-    id_14 numeric,
-    id_15 character varying COLLATE pg_catalog."default",
-    id_16 character varying COLLATE pg_catalog."default",
-    id_17 numeric,
-    id_18 numeric,
-    id_19 numeric,
-    id_20 numeric,
-    id_21 numeric,
-    id_22 numeric,
-    id_23 character varying COLLATE pg_catalog."default",
-    id_24 numeric,
-    id_25 numeric,
-    id_26 numeric,
-    id_27 character varying COLLATE pg_catalog."default",
-    id_28 character varying COLLATE pg_catalog."default",
-    id_29 character varying COLLATE pg_catalog."default",
-    id_30 character varying COLLATE pg_catalog."default",
-    id_31 character varying COLLATE pg_catalog."default",
-    id_32 numeric,
-    id_33 character varying COLLATE pg_catalog."default",
-    id_34 character varying COLLATE pg_catalog."default",
-    id_35 boolean,
-    id_36 boolean,
-    id_37 boolean,
-    id_38 boolean,
-    "DeviceType" character varying COLLATE pg_catalog."default",
-    "DeviceInfo" character varying COLLATE pg_catalog."default",
-    CONSTRAINT train_identity_table_pkey PRIMARY KEY ("TransactionID"),
-    CONSTRAINT unique_transaction_id UNIQUE ("TransactionID")
+    transaction_id bigint NOT NULL,
+    id_01 double precision,
+    id_02 double precision,
+    id_03 double precision,
+    id_04 double precision,
+    id_05 double precision,
+    id_06 double precision,
+    id_07 double precision,
+    id_08 double precision,
+    id_09 double precision,
+    id_10 double precision,
+    id_11 double precision,
+    id_12 text COLLATE pg_catalog."default",
+    id_13 double precision,
+    id_14 double precision,
+    id_15 text COLLATE pg_catalog."default",
+    id_16 text COLLATE pg_catalog."default",
+    id_17 double precision,
+    id_18 double precision,
+    id_19 double precision,
+    id_20 double precision,
+    id_21 double precision,
+    id_22 double precision,
+    id_23 text COLLATE pg_catalog."default",
+    id_24 double precision,
+    id_25 double precision,
+    id_26 double precision,
+    id_27 text COLLATE pg_catalog."default",
+    id_28 text COLLATE pg_catalog."default",
+    id_29 text COLLATE pg_catalog."default",
+    id_30 text COLLATE pg_catalog."default",
+    id_31 text COLLATE pg_catalog."default",
+    id_32 double precision,
+    id_33 text COLLATE pg_catalog."default",
+    id_34 text COLLATE pg_catalog."default",
+    id_35 text COLLATE pg_catalog."default",
+    id_36 text COLLATE pg_catalog."default",
+    id_37 text COLLATE pg_catalog."default",
+    id_38 text COLLATE pg_catalog."default",
+    device_type text COLLATE pg_catalog."default",
+    device_info text COLLATE pg_catalog."default",
+    CONSTRAINT pk_identity_transaction_id PRIMARY KEY (transaction_id),
+    CONSTRAINT fk_transaction_id FOREIGN KEY (transaction_id)
+        REFERENCES public.train_transaction (transaction_id) MATCH SIMPLE
+        ON UPDATE NO ACTION
+        ON DELETE NO ACTION
 )
 
 TABLESPACE pg_default;
 
-ALTER TABLE IF EXISTS public.train_identity_table
+ALTER TABLE IF EXISTS public.train_identity
     OWNER to postgres;
